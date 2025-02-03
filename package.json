@@ -6,9 +6,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@bradgarropy/next-link": "^1.1.0",
+    "class-variance-authority": "^0.7.1",
+    "framer-motion": "^12.0.8",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "tailwind-merge": "^3.0.1"
   },
   "engines": {
     "node": ">=18"
