@@ -11,6 +11,16 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        custom_black: "#141414",
+      },
+      animation: {
+        bounceY: "bounceY 2s infinite", // Animation personnalisée
+      },
+      keyframes: {
+        bounceY: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
       },
     },
   },
