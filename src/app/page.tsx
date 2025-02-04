@@ -68,7 +68,7 @@ export default function Home() {
       </nav>
 
       {/* Section principale */}
-      <section className="h-screen flex items-center bg-white relative">
+      <section className="h-screen flex items-center relative">
         {/* Texte à gauche avec largeur légèrement réduite */}
         <div className="z-10 w-full md:w-[45%] space-y-6 px-6 md:px-16">
           <h1
