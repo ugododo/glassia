@@ -119,7 +119,7 @@ export default function Home() {
       </section>
 
       {/* Fonctionnalités */} 
-      <section className="py-16 px-6 md:px-16">
+      <section className="pb-16 px-6 md:px-16">
       <h2 className="text-3xl font-bold mb-8">FONCTIONNALITÉS</h2>
 
       {/* Contenu principal avec image */}
