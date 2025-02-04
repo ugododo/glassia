@@ -1,7 +1,56 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
+import 'rc-steps/assets/index.css'
+
+const features = [
+  {
+    title: "Essai virtuel",
+    shortDescription: "Essayez des lunettes virtuellement pour trouver la paire qui vous convient le mieux",
+    description:
+      "Grâce à notre outil d’essayage virtuel, vous pouvez tester une large sélection de lunettes directement depuis votre smartphone ou votre ordinateur. Plus besoin de vous rendre en magasin pour essayer différents modèles : en quelques clics, visualisez chaque monture sur votre visage sous plusieurs angles et trouvez celle qui correspond parfaitement à votre morphologie et à votre style. Que vous recherchiez une paire élégante, moderne ou audacieuse, notre outil vous permet de comparer et d’affiner votre choix en toute simplicité, sans contrainte et en toute confiance.",
+    image: "/images/essai-virtuel.png",
+  },
+  {
+    title: "Chatbot IA",
+    shortDescription: "Recherchez une lunette en fonction de critères spécifiques",
+    description:
+      "Interagissez avec notre chatbot IA pour obtenir des réponses instantanées et personnalisées. Que ce soit pour poser des questions ou obtenir des recommandations, notre assistant intelligent est disponible à tout moment. Grâce à l’intelligence artificielle, il comprend vos besoins, s’adapte à vos préférences et vous guide avec des réponses précises et pertinentes. Plus besoin d’attendre une assistance humaine : accédez à une aide rapide et efficace en toute simplicité. Quelle que soit votre demande, notre chatbot vous accompagne pour une expérience fluide et sans effort.",
+    image: "/images/Chatbot.png",
+  },
+  {
+    title: "Conseils d'opticien",
+    shortDescription: "Posez vos questions à des profesionnels du métier",
+    description:
+      "Bénéficiez de l’expertise de nos opticiens pour des conseils adaptés à vos besoins. Que ce soit pour choisir la monture idéale, comprendre votre correction ou entretenir vos lunettes, nos professionnels sont à votre écoute. Grâce à leur savoir-faire, ils vous guident vers les meilleures options en fonction de votre style, de votre confort et de votre santé visuelle. Plus besoin de douter face à tant de choix : posez vos questions et recevez des recommandations précises et personnalisées pour paraître sous votre meilleur jour.",
+    image: "/images/Conseils.png",
+  },
+  {
+    title: "Prise de rendez-vous",
+    shortDescription: "Prenez un rendez-vous avec un opticien proche de chez vous",
+    description:
+      "Planifiez facilement votre rendez-vous avec un opticien proche de chez vous. Que ce soit pour un bilan visuel, un ajustement de monture ou des conseils personnalisés, prenez rendez-vous en quelques clics et à l’horaire qui vous convient. Plus besoin d’attendre : accédez rapidement à un professionnel qualifié qui saura répondre à vos besoins. Profitez d’un service sur mesure, sans stress et en toute simplicité, pour une expérience fluide et adaptée à votre emploi du temps.",
+    image: "/images/Rendez-vous.png",
+  },
+  {
+    title: "SAV Avancé",
+    shortDescription: "Réparez vos lunettes rapidement et efficacement",
+    description:
+      "Bénéficiez d’un service après-vente réactif pour réparer vos lunettes en toute simplicité. Qu’il s’agisse d’un ajustement, d’un remplacement de verres ou d’une réparation plus complexe, nos experts sont là pour redonner à votre monture son éclat et son confort d’origine. Plus besoin de vous inquiéter face aux petits accidents du quotidien : confiez vos lunettes à des professionnels qui sauront les remettre en état rapidement et efficacement. Profitez d’une prise en charge rapide et d’un service de qualité pour prolonger la durée de vie de vos lunettes en toute tranquillité.",
+    image: "/images/SAV.png",
+  },
+];
 
 export default function Home() {
+  const [currentFeature, setCurrentFeature] = useState(0);
+
+  const handlePrevious = () => {
+    setCurrentFeature((prev) => (prev === 0 ? features.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentFeature((prev) => (prev === features.length - 1 ? 0 : prev + 1));
+  };
   return (
     <div className="min-h-screen flex flex-col items-center bg-white">
       {/* Navbar */}
@@ -69,39 +118,108 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Fonctionnalités */}
-      <section className="py-16 bg-white px-6">
-        <h2 className="text-3xl font-bold text-center">Fonctionnalités</h2>
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Essayage virtuel",
-              desc: "Testez vos lunettes directement depuis chez vous.",
-            },
-            {
-              title: "Prise de rendez-vous",
-              desc: "Consultez un opticien partenaire en quelques clics.",
-            },
-            {
-              title: "Gestion flexible",
-              desc: "Modifiez ou annulez vos abonnements facilement.",
-            },
-          ].map((feature, index) => (
+      {/* Fonctionnalités */} 
+      <section className="py-16 px-6 md:px-16">
+      <h2 className="text-3xl font-bold mb-8">FONCTIONNALITÉS</h2>
+
+      {/* Contenu principal avec image */}
+      <div className="flex flex-col md:flex-row items-start gap-8 items-center">
+        {/* Image à gauche */}
+        <div className="w-full md:w-1/2 relative">
+          <Image
+            src={features[currentFeature].image}
+            alt={features[currentFeature].title}
+            width={600}
+            height={400}
+          />
+        </div>
+
+        {/* Texte à droite, verticalement centré */}
+        <div className="w-full md:w-1/2 flex flex-col justify-center">
+          <h3 className="text-xl font-bold mb-4">{features[currentFeature].title}</h3>
+          <p className="text-gray-700 text-lg leading-relaxed">
+            {features[currentFeature].description}
+          </p>
+        </div>
+      </div>
+        {/* Boutons */}
+      <div className="flex justify-between mt-8">
+        <button
+          className="text-gray-500 hover:text-black"
+          onClick={handlePrevious}
+        >
+          <Image
+            src="/images/arrow-left.svg"
+            alt="Précédent"
+            width={24}
+            height={24}
+          />
+        </button>
+        <button
+          className="text-gray-500 hover:text-black"
+          onClick={handleNext}
+        >
+          <Image
+            src="/images/arrow-right.svg"
+            alt="Suivant"
+            width={24}
+            height={24}
+          />
+        </button>
+      </div>
+
+      {/* Stepper */}
+      <div className="relative mt-12">
+        {/* Ligne connectée */}
+        <div className="absolute top-3 w-full border-t border-custom_black"></div>
+
+        <div className="flex w-full justify-between items-center">
+          {features.map((feature, index) => (
             <div
               key={index}
-              className="p-6 bg-gray-100 rounded-lg shadow-md text-center"
+              className="relative flex flex-col"
             >
-              <h3 className="text-xl font-semibold">{feature.title}</h3>
-              <p className="mt-2 text-custom_black">{feature.desc}</p>
+              {/* Cercle principal */}
+              <div
+                className={`w-6 h-6 rounded-full ${
+                  index < currentFeature
+                    ? "bg-primary"
+                    : index === currentFeature
+                    ? "bg-primary relative"
+                    : "bg-custom_black"
+                }`}
+              >
+                {/* Cercle secondaire autour de l’étape active */}
+                {index === currentFeature && (
+                  <div className="absolute -top-2 -left-2 w-10 h-10 border-2 border-primary rounded-full"></div>
+                )}
+              </div>
+
+              {/* Titres et descriptions secondaires */}
+              <span
+                className={`mt-4 text-sm ${
+                  index === currentFeature ? "text-custom_black font-semibold" : "text-custom_black font-medium"
+                }`}
+              >
+                {feature.title}
+              </span>
+              <span
+                className={`text-xs mt-1 w-4/6 ${
+                  index === currentFeature ? "text-custom_black" : "text-custom_black"
+                }`}
+              >
+                {feature.shortDescription}
+              </span>
             </div>
           ))}
         </div>
-      </section>
+      </div>
+    </section>
 
       {/* Avantages */}
       <section className="py-16 bg-gray-100 px-6">
-        <h2 className="text-3xl font-bold text-center">Avantages</h2>
-        <ul className="mt-8 max-w-4xl mx-auto space-y-4 text-custom_black-700">
+        <h2 className="text-3xl font-bold">Avantages</h2>
+        <ul className="mt-8 max-w-4xl mx-auto space-y-4 text-custom_black">
           {[
             "Flexibilité totale : changez de lunettes chaque année.",
             "Service client premium pour tous vos besoins.",
@@ -111,7 +229,7 @@ export default function Home() {
               key={index}
               className="p-4 bg-white rounded-lg shadow-md flex items-center gap-4"
             >
-              <span className="text-custom_black-500 text-xl font-bold">✓</span>
+              <span className="text-custom_black text-xl font-bold">✓</span>
               {advantage}
             </li>
           ))}
@@ -139,7 +257,7 @@ export default function Home() {
               className="p-6 bg-gray-100 rounded-lg shadow-md"
             >
               <p className="italic">“{testimonial.feedback}”</p>
-              <p className="mt-4 font-semibold text-custom_black-600">- {testimonial.name}</p>
+              <p className="mt-4 font-semibold text-custom_black">- {testimonial.name}</p>
             </div>
           ))}
         </div>
@@ -171,10 +289,10 @@ export default function Home() {
               className="p-6 bg-white rounded-lg shadow-md"
             >
               <h3 className="text-xl font-semibold">{tarif.plan}</h3>
-              <p className="text-2xl font-bold text-custom_black-600 mt-2">
+              <p className="text-2xl font-bold text-custom_black mt-2">
                 {tarif.price}
               </p>
-              <ul className="mt-4 space-y-2 text-custom_black-700">
+              <ul className="mt-4 space-y-2 text-custom_black">
                 {tarif.features.map((feature, idx) => (
                   <li key={idx}>- {feature}</li>
                 ))}
@@ -187,7 +305,7 @@ export default function Home() {
       {/* Newsletter */}
       <section className="py-16 bg-white px-6 text-center">
         <h2 className="text-3xl font-bold">Newsletter</h2>
-        <p className="mt-4 text-custom_black-700">
+        <p className="mt-4 text-custom_black">
           Inscrivez-vous pour recevoir nos dernières offres.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">

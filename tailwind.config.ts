@@ -12,9 +12,10 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         custom_black: "#141414",
+        primary :"#9D93EB",
       },
       animation: {
-        bounceY: "bounceY 2s infinite", // Animation personnalisée
+        bounceY: "bounceY 2s infinite",
       },
       keyframes: {
         bounceY: {
