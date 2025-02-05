@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import 'rc-steps/assets/index.css'
 
 const features = [
   {
