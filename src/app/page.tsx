@@ -382,23 +382,27 @@ export default function Home() {
       </section>
 
       {/* Newsletter */}
-      <section className="bg-gray-100 py-10 flex flex-col items-center">
-        <h2 className="text-xl font-bold text-gray-700 uppercase">Restez à jour, suivez notre</h2>
-        <h2 className="text-3xl font-bold mb-4">NEWSLETTER</h2>
-        <form onSubmit={handleSubmit} className="flex w-full max-w-2xl bg-white rounded-full overflow-hidden shadow-lg">
+      <section className="bg-gray-300 py-10 flex justify-center w-full">
+      <div className="flex flex-col md:flex-row items-center w-full max-w-6xl bg-gray-300 rounded-lg p-6 gap-6">
+        <div className="text-left md:w-1/3">
+          <h2 className="text-sm font-bold text-gray-700 uppercase">Restez à jour, suivez notre</h2>
+          <h2 className="text-4xl font-bold">NEWSLETTER</h2>
+        </div>
+        <form onSubmit={handleSubmit} className="flex flex-1 items-center w-full bg-white rounded-full overflow-hidden">
           <input
             type="email"
-            className="flex-1 px-6 py-3 text-gray-600 placeholder-gray-400 focus:outline-none"
+            className="flex-1 px-6 py-3 text-gray-600 placeholder-gray-400 focus:outline-none bg-white"
             placeholder="Votre adresse mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <button type="submit" className="bg-purple-500 text-white px-6 py-3 font-semibold hover:bg-purple-600">
+          <button type="submit" className="bg-[#9D93EB] text-white px-6 py-3 font-semibold rounded-full hover:bg-[#8A82D5]">
             S'ABONNER
           </button>
         </form>
-        {message && <p className="mt-4 text-green-600">{message}</p>}
+      </div>
+      {message && <p className="mt-4 text-green-600">{message}</p>}
       </section>
       <footer className="w-full bg-custom_black text-white py-10">
         <div className="px-6 md:px-16 flex flex-col md:flex-row justify-between items-center gap-8 max-w-[1440px] mx-auto">
