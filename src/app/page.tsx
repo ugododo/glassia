@@ -82,7 +82,7 @@ export default function Home() {
             testez-les virtuellement avant de choisir, et prenez rendez-vous
             avec un opticien rapidement.
           </p>
-          <div className="flex flex-col items-start space-y-4">
+          <div className="flex flex-col items-start space-y-4 pt-4">
             {/* Boutons alignés à gauche */}
             <div className="flex gap-4 mb-10">
               <button className="px-10 py-3 bg-custom_black text-white rounded-full text-sm font-normal hover:bg-gray-800">
@@ -94,13 +94,15 @@ export default function Home() {
             </div>
 
             {/* Flèche sous les boutons avec plus d'espace et bien centrée */}
-            <Image
-              src="/images/arrow.svg"
-              alt="Flèche animée"
-              className="w-12 h-12 animate-bounceY self-center"
-              width={65}
-              height={85}
-            />
+            <div className="pl-40">
+              <Image
+                src="/images/arrow.svg"
+                alt="Flèche animée"
+                className="w-16 h-16 animate-bounceY self-left"
+                width={65}
+                height={85}
+              />
+            </div>
           </div>
         </div>
 
@@ -217,28 +219,88 @@ export default function Home() {
               </span>
             </div>
           ))}
+          </div>
+          <div className="flex flex-col items-start pr-20 pt-20">
+            <Image
+              src="/images/arrow.svg"
+              alt="Flèche animée"
+              className="w-16 h-16 animate-bounceY self-end"
+              width={85}
+              height={105}
+            />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
       {/* Avantages */}
-      <section className="py-16 bg-gray-100 px-6">
-        <h2 className="text-3xl font-bold">Avantages</h2>
-        <ul className="mt-8 max-w-4xl mx-auto space-y-4 text-custom_black">
+      <section className="px-6 md:px-16 relative py-16">
+        <h2 className="text-4xl font-bold text-right mb-12">AVANTAGES</h2>
+
+        {/* Conteneur des cartes et de la ligne */}
+        <div className="relative flex flex-col md:flex-row justify-center items-center gap-20">
+          {/* Ligne connectée */}
+          <div
+            className="absolute top-1/2 transform -translate-y-1/2 border-t-2 border-custom_black"
+            style={{
+              width: "90%", // Ajustez ici pour que la largeur soit limitée
+              maxWidth: "75rem", // Largeur maximale alignée sur la largeur des cartes
+              margin: "0 auto", // Centrer la ligne horizontalement
+            }}
+          ></div>
+
+          {/* Cartes */}
           {[
-            "Flexibilité totale : changez de lunettes chaque année.",
-            "Service client premium pour tous vos besoins.",
-            "Prix compétitifs pour des produits de qualité.",
+            {
+              icon: "/images/Avantage1.png",
+              title: "Une offre plus accessible.",
+              number: "01",
+            },
+            {
+              icon: "/images/Avantage2.png",
+              title: "Des conseils adaptés à votre physionomie.",
+              number: "02",
+            },
+            {
+              icon: "/images/Avantage3.png",
+              title: "Un service client très réactif.",
+              number: "03",
+            },
           ].map((advantage, index) => (
-            <li
+            <div
               key={index}
-              className="p-4 bg-white rounded-lg shadow-md flex items-center gap-4"
+              className="relative p-10 md:w-[25rem] md:h-[25rem] transform hover:scale-105 transition-transform duration-300 flex flex-col justify-between"
+              style={{
+                backgroundImage: `url('/images/Avantage_bg.svg')`,
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "right",
+              }}
             >
-              <span className="text-custom_black text-xl font-bold">✓</span>
-              {advantage}
-            </li>
+              {/* Icône */}
+              <div className="w-12 h-12 flex items-center justify-center rounded-full">
+                <Image
+                  src={advantage.icon}
+                  alt={advantage.title}
+                  width={46}
+                  height={46}
+                  priority
+                  unoptimized
+                  quality={100}
+                />
+              </div>
+
+              {/* Contenu */}
+              <div className="text-left w-60 pl-12">
+                <h3 className="text-2xl text-custom_black" style={{ lineHeight: "1.3" }}>{advantage.title}</h3>
+              </div>
+
+              {/* Numéro */}
+              <div className="text-custom_black text-6xl font-medium text-right pr-6">
+                {advantage.number}
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       </section>
 
       {/* Témoignages */}
