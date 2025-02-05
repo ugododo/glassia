@@ -233,7 +233,7 @@ export default function Home() {
       </section>
 
       {/* Avantages */}
-      <section className="px-6 md:px-16 relative py-16">
+      <section className="px-6 md:px-16 relative">
         <h2 className="text-4xl font-bold text-right mb-12">AVANTAGES</h2>
 
         {/* Conteneur des cartes et de la ligne */}
