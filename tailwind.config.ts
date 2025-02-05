@@ -15,6 +15,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         custom_black: "#141414",
+        custom_primary: "#8A82D5",
         primary :"#9D93EB",
       },
       animation: {

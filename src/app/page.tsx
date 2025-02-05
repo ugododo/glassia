@@ -397,13 +397,15 @@ export default function Home() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <button type="submit" className="bg-[#9D93EB] text-white px-6 py-3 font-semibold rounded-full hover:bg-[#8A82D5]">
+          <button type="submit" className="bg-primary text-white px-6 py-3 font-semibold rounded-full hover:bg-custom_primary">
             S'ABONNER
           </button>
         </form>
       </div>
       {message && <p className="mt-4 text-green-600">{message}</p>}
       </section>
+
+      {/* Footer */}
       <footer className="w-full bg-custom_black text-white py-10">
         <div className="px-6 md:px-16 flex flex-col md:flex-row justify-between items-center gap-8 max-w-[1440px] mx-auto">
           {/* Section gauche : Logo et réseaux sociaux */}
