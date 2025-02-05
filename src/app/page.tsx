@@ -72,7 +72,7 @@ export default function Home() {
         {/* Texte à gauche avec largeur légèrement réduite */}
         <div className="z-10 w-full md:w-[45%] space-y-6 px-6 md:px-16">
           <h1
-            className="text-5xl md:text-7xl font-semibold tracking-wide"
+            className="text-5xl md:text-6xl font-semibold tracking-wide"
             style={{ lineHeight: "1.3" }}
           >
             VOS LUNETTES EN LEASING
@@ -120,7 +120,12 @@ export default function Home() {
 
       {/* Fonctionnalités */} 
       <section className="pb-16 px-6 md:px-16">
-      <h2 className="text-3xl font-bold mb-8">FONCTIONNALITÉS</h2>
+        <h2
+          className="text-4xl font-bold mb-8"
+          style={{ lineHeight: "1.3" }}
+        >
+          FONCTIONNALITÉS
+        </h2>
 
       {/* Contenu principal avec image */}
       <div className="flex flex-col md:flex-row items-start gap-8 items-center">
@@ -137,7 +142,7 @@ export default function Home() {
         {/* Texte à droite, verticalement centré */}
         <div className="w-full md:w-1/2 flex flex-col justify-center">
           <h3 className="text-xl font-bold mb-4">{features[currentFeature].title}</h3>
-          <p className="text-gray-700 text-lg leading-relaxed">
+          <p className="text-gray-700 text-base leading-relaxed">
             {features[currentFeature].description}
           </p>
         </div>
@@ -198,7 +203,7 @@ export default function Home() {
               {/* Titres et descriptions secondaires */}
               <span
                 className={`mt-4 text-sm ${
-                  index === currentFeature ? "text-custom_black font-semibold" : "text-custom_black font-medium"
+                  index === currentFeature ? "text-custom_black font-semibold" : "text-custom_black font-semibold"
                 }`}
               >
                 {feature.title}
