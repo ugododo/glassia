@@ -52,7 +52,7 @@ export default function Home() {
     setCurrentFeature((prev) => (prev === features.length - 1 ? 0 : prev + 1));
   };
   return (
-    <div className="min-h-screen flex flex-col items-center bg-white">
+    <div className="min-h-screen flex flex-col items-center bg-white overflow-x-hidden">
       {/* Navbar */}
       <nav className="w-full bg-custom_black py-4 px-6 md:px-20">
         <div className="flex items-center">
@@ -386,6 +386,101 @@ export default function Home() {
           </button>
         </div>
       </section>
+      <footer className="w-full bg-custom_black text-white py-10">
+        <div className="px-6 md:px-16 flex flex-col md:flex-row justify-between items-center gap-8 max-w-[1440px] mx-auto">
+          {/* Section gauche : Logo et réseaux sociaux */}
+          <div className="flex flex-col items-start gap-4">
+            {/* Logo */}
+            <Image
+              src="/images/logo.svg"
+              alt="Logo Glassia"
+              width={120}
+              height={40}
+              className="object-contain"
+            />
+            {/* Réseaux sociaux */}
+            <div className="flex items-center gap-4">
+              <a href="#" aria-label="Facebook" className="hover:opacity-75">
+                <Image src="/images/facebook.svg" alt="Facebook" width={24} height={24} />
+              </a>
+              <a href="#" aria-label="Instagram" className="hover:opacity-75">
+                <Image src="/images/instagram.svg" alt="Instagram" width={24} height={24} />
+              </a>
+              <a href="#" aria-label="TikTok" className="hover:opacity-75">
+                <Image src="/images/tiktok.svg" alt="TikTok" width={24} height={24} />
+              </a>
+            </div>
+          </div>
+
+          {/* Section centrale : Boutons des stores */}
+          <div className="flex flex-col md:flex-row gap-4">
+            <a
+              href="#"
+              className="flex items-center justify-center text-black px-4 py-2 rounded-lg shadow hover:opacity-75"
+            >
+              <Image
+                src="/images/appstore.png"
+                alt="App Store"
+                width={192}
+                height={57}
+                className="mr-2"
+                unoptimized
+                quality={100}
+                priority
+              />
+            </a>
+            <a
+              href="#"
+              className="flex items-center justify-center text-black px-4 py-2 rounded-lg shadow hover:opacity-75"
+            >
+              <Image
+                src="/images/googleplay.png"
+                alt="Google Play"
+                width={192}
+                height={57}
+                className="mr-2"
+                unoptimized
+                quality={100}
+              />
+            </a>
+          </div>
+
+          {/* Section droite : Liens */}
+          <div className="flex flex-col md:flex-row gap-12">
+            <div>
+              <h4 className="font-semibold mb-4">À propos</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#" className="hover:opacity-75">Optical Factory</a>
+                </li>
+                <li>
+                  <a href="#" className="hover:opacity-75">Besoin d'aide</a>
+                </li>
+                <li>
+                  <a href="#" className="hover:opacity-75">Nous contacter</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold mb-4">Informations légales</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a href="#" className="hover:opacity-75">CGU</a>
+                </li>
+                <li>
+                  <a href="#" className="hover:opacity-75">Politique de confidentialité</a>
+                </li>
+                <li>
+                  <a href="#" className="hover:opacity-75">Mentions légales</a>
+                </li>
+                <li>
+                  <a href="#" className="hover:opacity-75">Gestion des cookies</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
