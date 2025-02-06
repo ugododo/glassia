@@ -45,6 +45,50 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  const plans = [
+    {
+      name: "GRATUITE",
+      price: "0€",
+      description: "Accès limité à l’application",
+      features: ["Essai virtuel limité", "Chat avec une IA"],
+      buttonText: "TÉLÉCHARGER",
+      buttonStyle: "border border-black text-black",
+    },
+    {
+      name: "STANDARD",
+      price: "4€/mois",
+      subtext: "Sans engagement",
+      description: "Accès à toutes les fonctionnalités de l’application",
+      features: [
+        "Essai virtuel illimité",
+        "Chat avec IA",
+        "Réduction exclusives chez des partenaires",
+        "Analyse virtuelle",
+        "Prise de rendez-vous avec un opticien",
+      ],
+      buttonText: "TÉLÉCHARGER",
+      buttonStyle: "border border-black text-black",
+    },
+    {
+      name: "PREMIUM",
+      price: "Prix ajustable sous devis",
+      subtext: "Engagement 1 an*",
+      description: "Abonnement aux lunettes & accès à l’application",
+      features: [
+        "Fonctionnalités de la formule Standard",
+        "Renouvellement anticipé",
+        "SAV avancé",
+        "Accès au support client prioritaire",
+        "Possibilité de changer de modèle une fois par an",
+        "Accès à des collections exclusives",
+      ],
+      footnote: "* Voir condition d'achat",
+      buttonText: "DEMANDER UN DEVIS",
+      buttonStyle: "bg-black text-white",
+    },
+  ];
+
+
   const handlePrevious = () => {
     setCurrentFeature((prev) => (prev === 0 ? features.length - 1 : prev - 1));
   };
@@ -342,44 +386,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Tarifs */}
-      <section className="py-16 bg-gray-100 px-6">
-        <h2 className="text-3xl font-bold text-center">Tarifs</h2>
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              plan: "Basique",
-              price: "10€/mois",
-              features: ["1 paire/an", "Essai virtuel inclus", "Support standard"],
-            },
-            {
-              plan: "Premium",
-              price: "20€/mois",
-              features: ["2 paires/an", "Essai virtuel + RDV", "Support prioritaire"],
-            },
-            {
-              plan: "Exclusif",
-              price: "30€/mois",
-              features: ["3 paires/an", "Remplacement rapide", "Support premium"],
-            },
-          ].map((tarif, index) => (
-            <div
-              key={index}
-              className="p-6 bg-white rounded-lg shadow-md"
-            >
-              <h3 className="text-xl font-semibold">{tarif.plan}</h3>
-              <p className="text-2xl font-bold text-custom_black mt-2">
-                {tarif.price}
-              </p>
-              <ul className="mt-4 space-y-2 text-custom_black">
-                {tarif.features.map((feature, idx) => (
-                  <li key={idx}>- {feature}</li>
+      {/* Formules */}
+      <section className="py-16 flex flex-col items-center">
+      <h1 className="text-4xl font-bold mb-8">Formules</h1>
+      <div className="grid md:grid-cols-3 gap-6 max-w-6xl w-full px-4 flex justify-center">
+        {plans.map((plan, index) => (
+          <div
+            key={index}
+            className="bg-white rounded-lg shadow-lg p-6 flex flex-col justify-between border"
+          >
+            <div>
+              <span className="bg-primary text-white px-3 py-1 rounded-full text-sm">
+                {plan.name}
+              </span>
+              <h2 className="text-3xl font-bold mt-4">{plan.price}</h2>
+              {plan.subtext && <p className="text-gray-500 text-sm">{plan.subtext}</p>}
+              <p className="text-gray-600 mt-2">{plan.description}</p>
+              <h3 className="font-semibold mt-4">Fonctionnalités incluses</h3>
+              <ul className="mt-2 text-gray-700">
+                {plan.features.map((feature, i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    <span className="text-black">■</span> {feature}
+                  </li>
                 ))}
               </ul>
+              {plan.footnote && <p className="text-gray-500 text-xs mt-2">{plan.footnote}</p>}
             </div>
-          ))}
-        </div>
-      </section>
+            <button
+              className={`mt-6 py-3 px-6 rounded-full font-semibold ${plan.buttonStyle}`}
+            >
+              {plan.buttonText}
+            </button>
+          </div>
+        ))}
+      </div>
+    </section>
 
       {/* Newsletter */}
       <section className="bg-gray-300 py-10 flex justify-center w-full">
