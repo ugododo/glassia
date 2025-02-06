@@ -70,11 +70,6 @@ export default function Home() {
   const handleCardClick = (index: number) => {
     setCurrentIndex(index);
   };
-  const [currentIndex, setCurrentIndex] = useState(Math.floor(testimonials.length / 2));
-
-  const handleCardClick = (index: number) => {
-    setCurrentIndex(index);
-  };
 
   const plans = [
     {
