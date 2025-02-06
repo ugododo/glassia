@@ -57,6 +57,7 @@ export default function Home() {
     {
       name: "STANDARD",
       price: "4€/mois",
+      subtext: "Sans engagement",
       description: "Accès à toutes les fonctionnalités de l’application",
       features: [
         "Essai virtuel illimité",
@@ -71,6 +72,7 @@ export default function Home() {
     {
       name: "PREMIUM",
       price: "Prix ajustable sous devis",
+      subtext: "Engagement 1 an*",
       description: "Abonnement aux lunettes & accès à l’application",
       features: [
         "Fonctionnalités de la formule Standard",
@@ -80,6 +82,7 @@ export default function Home() {
         "Possibilité de changer de modèle une fois par an",
         "Accès à des collections exclusives",
       ],
+      footnote: "* Voir condition d'achat",
       buttonText: "DEMANDER UN DEVIS",
       buttonStyle: "bg-black text-white",
     },
@@ -397,6 +400,7 @@ export default function Home() {
                 {plan.name}
               </span>
               <h2 className="text-3xl font-bold mt-4">{plan.price}</h2>
+              {plan.subtext && <p className="text-gray-500 text-sm">{plan.subtext}</p>}
               <p className="text-gray-600 mt-2">{plan.description}</p>
               <h3 className="font-semibold mt-4">Fonctionnalités incluses</h3>
               <ul className="mt-2 text-gray-700">
@@ -406,6 +410,7 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+              {plan.footnote && <p className="text-gray-500 text-xs mt-2">{plan.footnote}</p>}
             </div>
             <button
               className={`mt-6 py-3 px-6 rounded-full font-semibold ${plan.buttonStyle}`}
