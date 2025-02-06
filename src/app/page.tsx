@@ -40,10 +40,36 @@ const features = [
   },
 ];
 
+const testimonials = [
+  {
+    name: "Mélanie G.",
+    title: "Renouvellement anticipé",
+    feedback:
+      "J’adore changer de lunettes régulièrement, et avec l’option de renouvellement anticipé, c’est devenu super accessible ! J’ai changé de monture au bout de 6 mois, et le service client a été top.",
+  },
+  {
+    name: "Pierre D.",
+    title: "Essai de lunettes !",
+    feedback:
+      "L’essai virtuel est bluffant de réalisme ! J’ai pu tester plusieurs modèles depuis chez moi avant d’aller en boutique. En plus, j’ai eu une analyse visuelle hyper précise.",
+  },
+  {
+    name: "Roxanne A.",
+    title: "Service client au top !",
+    feedback:
+      "J’ai été bluffée par la qualité du service client. Après avoir perdu mes lunettes, j’ai contacté leur support prioritaire et en moins de 48h, j’avais déjà une nouvelle paire grâce à la garantie casse/perte.",
+  },
+];
+
 export default function Home() {
   const [currentFeature, setCurrentFeature] = useState(0);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(Math.floor(testimonials.length / 2));
+
+  const handleCardClick = (index: number) => {
+    setCurrentIndex(index);
+  };
 
   const plans = [
     {
@@ -357,32 +383,87 @@ export default function Home() {
             </div>
           ))}
         </div>
+        <div className="flex flex-col items-start pl-20 pt-20">
+            <Image
+              src="/images/arrow.svg"
+              alt="Flèche animée"
+              className="w-16 h-16 animate-bounceY self-start"
+              width={85}
+              height={105}
+            />
+          </div>
       </section>
 
       {/* Témoignages */}
-      <section className="py-16 bg-white px-6">
-        <h2 className="text-3xl font-bold text-center">Témoignages</h2>
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[
-            {
-              name: "Alice Dupont",
-              feedback:
-                "Le service est incroyable, j'ai pu essayer mes lunettes sans me déplacer.",
-            },
-            {
-              name: "Jean Martin",
-              feedback:
-                "Très pratique et flexible, je ne changerais pour rien au monde.",
-            },
-          ].map((testimonial, index) => (
-            <div
-              key={index}
-              className="p-6 bg-gray-100 rounded-lg shadow-md"
-            >
-              <p className="italic">“{testimonial.feedback}”</p>
-              <p className="mt-4 font-semibold text-custom_black">- {testimonial.name}</p>
-            </div>
-          ))}
+      <section className="py-16 px-16 relative">
+        <h2 className="text-4xl font-bold text-left mb-4">TÉMOIGNAGES</h2>
+        <p className="text-custom_black text-left mb-12">
+          Ils en parlent mieux que personne, ils ont testé pour vous !
+        </p>
+
+        {/* Carrousel */}
+        <div className="relative flex items-center justify-center overflow-visible min-h-[300px]">
+          <div className="flex items-center gap-8">
+            {testimonials.map((testimonial, index) => {
+              const isActive = index === currentIndex;
+              const isLeft =
+                index === (currentIndex - 1 + testimonials.length) % testimonials.length;
+              const isRight =
+                index === (currentIndex + 1) % testimonials.length;
+
+              return (
+                <div
+                  key={index}
+                  onClick={() => handleCardClick(index)}
+                  className={`cursor-pointer transition-all duration-500 ease-in-out relative flex flex-col p-8 ${
+                    isActive
+                      ? "scale-100 opacity-100 z-20"
+                      : isLeft || isRight
+                      ? "scale-50 opacity-100 z-10"
+                      : "scale-50 opacity-0 z-0"
+                  }`}
+                >
+                  {/* Image en arrière-plan */}
+                  <div className="absolute inset-0 -z-10">
+                    <Image
+                      src="/images/Temoignages_bg.svg"
+                      alt="Témoignage"
+                      layout="fill"
+                      objectFit="contain"
+                      className={`transition-transform duration-500 ${
+                        isActive ? "scale-150" : "scale-150"
+                      }`}
+                    />
+                  </div>
+
+                  {/* Contenu */}
+                  <h3
+                    className={`${
+                      isActive
+                        ? "text-xl font-bold mb-2"
+                        : "text-xs font-bold mb-1"
+                    }`}
+                  >
+                    {testimonial.title}
+                  </h3>
+                  <p
+                    className={`text-custom_black italic ${
+                      isActive ? "mb-4 text-base" : "mb-2 text-xs"
+                    }`}
+                  >
+                    {testimonial.feedback}
+                  </p>
+                  <p
+                    className={`text-custom_black font-bold ${
+                      isActive ? "text-base" : "text-xs"
+                    }`}
+                  >
+                    — {testimonial.name}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -423,8 +504,8 @@ export default function Home() {
     </section>
 
       {/* Newsletter */}
-      <section className="bg-gray-300 py-10 flex justify-center w-full">
-      <div className="flex flex-col md:flex-row items-center w-full max-w-6xl bg-gray-300 rounded-lg p-6 gap-6">
+      <section className="bg-custom_gray py-10 flex justify-center w-full">
+      <div className="flex flex-col md:flex-row items-center w-full max-w-6xl bg-custom_gray rounded-lg p-6 gap-6">
         <div className="text-left md:w-1/3">
           <h2 className="text-sm font-bold text-gray-700 uppercase">Restez à jour, suivez notre</h2>
           <h2 className="text-4xl font-bold">NEWSLETTER</h2>

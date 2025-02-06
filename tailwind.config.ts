@@ -16,7 +16,8 @@ export default {
         foreground: "var(--foreground)",
         custom_black: "#141414",
         custom_primary: "#8A82D5",
-        primary :"#9D93EB",
+        custom_gray: "#F3F3F3",
+        primary: "#9D93EB",
       },
       animation: {
         bounceY: "bounceY 2s infinite",
