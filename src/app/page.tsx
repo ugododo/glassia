@@ -398,7 +398,7 @@ export default function Home() {
             required
           />
           <button type="submit" className="bg-primary text-white px-6 py-3 font-semibold rounded-full hover:bg-custom_primary">
-            S'ABONNER
+            S&apos;ABONNER
           </button>
         </form>
       </div>
@@ -474,7 +474,7 @@ export default function Home() {
                   <a href="#" className="hover:opacity-75">Optical Factory</a>
                 </li>
                 <li>
-                  <a href="#" className="hover:opacity-75">Besoin d'aide</a>
+                  <a href="#" className="hover:opacity-75">Besoin d&apos;aide</a>
                 </li>
                 <li>
                   <a href="#" className="hover:opacity-75">Nous contacter</a>
