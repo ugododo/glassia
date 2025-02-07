@@ -76,7 +76,7 @@ export default function Home() {
       name: "GRATUITE",
       price: "0€",
       description: "Accès limité à l’application",
-      features: ["Essai virtuel limité", "Chat avec une IA"],
+      features: ["Essai virtuel limité (trois)", "Chat avec une IA"],
       buttonText: "TÉLÉCHARGER",
       buttonStyle: "border border-black text-black",
     },
@@ -167,12 +167,33 @@ export default function Home() {
           <div className="flex flex-col items-start space-y-4 pt-4">
             {/* Boutons alignés à gauche */}
             <div className="flex gap-4 mb-10">
-              <button className="px-10 py-3 bg-custom_black text-white rounded-full text-sm font-normal hover:bg-gray-800">
-                TÉLÉCHARGER
-              </button>
               <button className="px-10 py-3 border border-custom_black text-custom_black rounded-full text-sm font-normal hover:bg-gray-100">
                 VIDÉO EXPLICATIVE
               </button>
+            </div>
+
+            {/* Boutons de téléchargement */}
+            <div className="flex gap-4 mb-10 pb-6">
+              <a target="_blank" href={'https://www.apple.com/'}>
+                <Image
+                  src="/images/download-ios.png"
+                  alt="Bouton de téléchargement IOS"
+                  priority
+                  unoptimized
+                  width={200}
+                  height={60}
+                />
+              </a>
+              <a target="_blank" href={'https://www.android.com/'}>
+                <Image
+                  src="/images/download-android.png"
+                  alt="Bouton de téléchargement Android"
+                  priority
+                  unoptimized
+                  width={200}
+                  height={60}
+                />
+              </a>
             </div>
 
             {/* Flèche sous les boutons avec plus d'espace et bien centrée */}
