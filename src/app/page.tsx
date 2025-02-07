@@ -133,19 +133,44 @@ export default function Home() {
     setEmail("");
   };
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop - 80, // Ajuste pour ne pas cacher sous la navbar
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col items-center bg-white overflow-x-hidden">
       {/* Navbar */}
-      <nav className="w-full bg-custom_black py-4 px-6 md:px-20">
-        <div className="flex items-center">
+      <nav className="fixed top-0 left-0 w-full bg-custom_black py-4 px-6 md:px-20 z-50">
+        <div className="flex justify-between items-center">
           {/* Logo */}
           <Image
             src="/images/logo.svg"
             alt="Logo"
-            width={120}
-            height={40}
+            width={100}
+            height={20}
             className="object-contain"
           />
+          {/* Liens de navigation */}
+          <ul className="hidden md:flex gap-8 text-white text-sm font-medium">
+            <li className="cursor-pointer hover:opacity-75" onClick={() => scrollToSection("features")}>
+              Fonctionnalités
+            </li>
+            <li className="cursor-pointer hover:opacity-75" onClick={() => scrollToSection("advantages")}>
+              Avantages
+            </li>
+            <li className="cursor-pointer hover:opacity-75" onClick={() => scrollToSection("testimonials")}>
+              Témoignages
+            </li>
+            <li className="cursor-pointer hover:opacity-75" onClick={() => scrollToSection("plans")}>
+              Formules
+            </li>
+          </ul>
         </div>
       </nav>
 
@@ -203,7 +228,7 @@ export default function Home() {
       </section>
 
       {/* Fonctionnalités */} 
-      <section className="pb-16 px-6 md:px-16">
+      <section id="features" className="pb-16 px-6 md:px-16">
         <h2
           className="text-4xl font-bold mb-8"
           style={{ lineHeight: "1.3" }}
@@ -315,7 +340,7 @@ export default function Home() {
       </section>
 
       {/* Avantages */}
-      <section className="px-6 md:px-16 relative">
+      <section id="advantages" className="px-6 md:px-16 relative">
         <h2 className="text-4xl font-bold text-right mb-12">AVANTAGES</h2>
 
         {/* Conteneur des cartes et de la ligne */}
@@ -395,7 +420,7 @@ export default function Home() {
       </section>
 
       {/* Témoignages */}
-      <section className="py-16 px-16 relative">
+      <section id="testimonials" className="py-16 px-16 relative">
         <h2 className="text-4xl font-bold text-left mb-4">TÉMOIGNAGES</h2>
         <p className="text-custom_black text-left mb-12">
           Ils en parlent mieux que personne, ils ont testé pour vous !
@@ -465,10 +490,19 @@ export default function Home() {
             })}
           </div>
         </div>
+        <div className="flex flex-col items-center pt-20">
+            <Image
+              src="/images/arrow.svg"
+              alt="Flèche animée"
+              className="w-16 h-16 animate-bounceY self-center"
+              width={85}
+              height={105}
+            />
+          </div>
       </section>
 
       {/* Formules */}
-      <section className="py-16 flex flex-col items-center">
+      <section id="plans" className="pb-16 flex flex-col items-center">
       <h1 className="text-4xl font-bold mb-8">Formules</h1>
       <div className="grid md:grid-cols-3 gap-6 max-w-6xl w-full px-4 flex justify-center">
         {plans.map((plan, index) => (
