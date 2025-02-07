@@ -76,7 +76,7 @@ export default function Home() {
       name: "GRATUITE",
       price: "0€",
       description: "Accès limité à l’application",
-      features: ["Essai virtuel limité (trois)", "Chat avec une IA"],
+      features: ["Essai virtuel limité (3)", "Chat avec une IA"],
       buttonText: "TÉLÉCHARGER",
       buttonStyle: "border border-black text-black",
     },
