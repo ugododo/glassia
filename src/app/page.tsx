@@ -177,7 +177,7 @@ export default function Home() {
       {/* Section principale */}
       <section className="h-screen flex items-center relative">
         {/* Texte à gauche avec largeur légèrement réduite */}
-        <div className="z-10 w-full md:w-[45%] space-y-6 px-6 md:px-16">
+        <div className="z-10 w-full md:w-[45%] px-6 md:px-16 pt-8">
           <h1
             className="text-5xl md:text-6xl font-semibold tracking-wide"
             style={{ lineHeight: "1.3" }}
@@ -189,7 +189,7 @@ export default function Home() {
             testez-les virtuellement avant de choisir, et prenez rendez-vous
             avec un opticien rapidement.
           </p>
-          <div className="flex flex-col items-start space-y-4 pt-4">
+          <div className="flex flex-col items-start pt-4">
             {/* Boutons alignés à gauche */}
             <div className="flex gap-4 mb-10">
               <button className="px-10 py-3 border border-custom_black text-custom_black rounded-full text-sm font-normal hover:bg-gray-100">
@@ -205,8 +205,8 @@ export default function Home() {
                   alt="Bouton de téléchargement IOS"
                   priority
                   unoptimized
-                  width={200}
-                  height={60}
+                  width={160}
+                  height={20}
                 />
               </a>
               <a target="_blank" href={'https://www.android.com/'}>
@@ -215,8 +215,8 @@ export default function Home() {
                   alt="Bouton de téléchargement Android"
                   priority
                   unoptimized
-                  width={200}
-                  height={60}
+                  width={160}
+                  height={20}
                 />
               </a>
             </div>
@@ -236,7 +236,7 @@ export default function Home() {
 
         {/* Image à droite encore plus large */}
         <div className="absolute top-0 right-0 h-full w-full md:w-[54%]">
-          <div className="relative w-[100%] h-[90%]">
+          <div className="relative w-[100%] h-[100%]">
             <Image
               src="/images/image_wow.png"
               alt="Lunettes en leasing"
@@ -249,7 +249,7 @@ export default function Home() {
       </section>
 
       {/* Fonctionnalités */} 
-      <section id="features" className="pb-16 px-6 md:px-16">
+      <section id="features" className="pb-16 px-6 md:px-16 pt-12">
         <h2
           className="text-4xl font-bold mb-8"
           style={{ lineHeight: "1.3" }}
@@ -541,7 +541,7 @@ export default function Home() {
               <h3 className="font-semibold mt-4">Fonctionnalités incluses</h3>
               <ul className="mt-2 text-gray-700">
                 {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-2">
+                  <li key={i} className="flex items-start gap-2">
                     <span className="text-black">■</span> {feature}
                   </li>
                 ))}
