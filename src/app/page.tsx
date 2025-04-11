@@ -264,10 +264,10 @@ export default function Home() {
           </div>
           {/* Bloc texte à droite */}
           <div className="w-full md:w-1/2 flex flex-col justify-center">
-            <h3 className="text-xl font-bold mb-4">
+            <h3 className="text-2xl font-bold mb-4">
               {features[currentFeature].title}
             </h3>
-            <p className="text-gray-700 text-base leading-relaxed">
+            <p className="text-gray-700 text-lg">
               {features[currentFeature].description}
             </p>
           </div>
@@ -311,10 +311,10 @@ export default function Home() {
                     <div className="absolute -top-2 -left-2 w-10 h-10 border-2 border-primary rounded-full"></div>
                   )}
                 </div>
-                <span className="mt-4 text-xs text-custom_black font-semibold max-w-[100px] md:max-w-[230px]">
+                <span className="mt-4 text-sm text-custom_black font-semibold max-w-[100px] md:max-w-[230px]">
                   {feature.title}
                 </span>
-                <span className="hidden md:block text-xs text-left text-custom_black max-w-[230px]">
+                <span className="hidden md:block text-sm text-left text-custom_black max-w-[230px]">
                   {feature.shortDescription}
                 </span>
               </div>
