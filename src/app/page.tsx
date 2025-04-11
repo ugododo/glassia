@@ -137,7 +137,7 @@ export default function Home() {
     const section = document.getElementById(sectionId);
     if (section) {
       window.scrollTo({
-        top: section.offsetTop - 80, // Ajuste pour ne pas cacher sous la navbar
+        top: section.offsetTop - 80,
         behavior: "smooth",
       });
     }
@@ -175,11 +175,11 @@ export default function Home() {
       </nav>
 
       {/* Section principale */}
-      <section className="h-screen flex items-center relative">
-        {/* Texte à gauche avec largeur légèrement réduite */}
+      <section className="min-h-auto md:min-h-[calc(100vh-80px)] flex flex-col md:flex-row items-center relative">
+        {/* Contenu textuel à gauche */}
         <div className="z-10 w-full md:w-[45%] px-6 md:px-16 pt-8">
           <h1
-            className="text-5xl md:text-6xl font-semibold tracking-wide"
+            className="text-5xl md:text-6xl font-semibold tracking-wide mt-16"
             style={{ lineHeight: "1.3" }}
           >
             VOS LUNETTES EN LEASING
@@ -189,17 +189,15 @@ export default function Home() {
             testez-les virtuellement avant de choisir, et prenez rendez-vous
             avec un opticien rapidement.
           </p>
+          {/* Boutons et autres éléments */}
           <div className="flex flex-col items-start pt-4">
-            {/* Boutons alignés à gauche */}
             <div className="flex gap-4 mb-10">
               <button className="px-10 py-3 border border-custom_black text-custom_black rounded-full text-sm font-normal hover:bg-gray-100">
                 VIDÉO EXPLICATIVE
               </button>
             </div>
-
-            {/* Boutons de téléchargement */}
             <div className="flex gap-4 mb-10 pb-6">
-              <a target="_blank" href={'https://www.apple.com/'}>
+              <a target="_blank" href="https://www.apple.com/">
                 <Image
                   src="/images/download-ios.png"
                   alt="Bouton de téléchargement IOS"
@@ -209,7 +207,7 @@ export default function Home() {
                   height={20}
                 />
               </a>
-              <a target="_blank" href={'https://www.android.com/'}>
+              <a target="_blank" href="https://www.android.com/">
                 <Image
                   src="/images/download-android.png"
                   alt="Bouton de téléchargement Android"
@@ -220,13 +218,11 @@ export default function Home() {
                 />
               </a>
             </div>
-
-            {/* Flèche sous les boutons avec plus d'espace et bien centrée */}
             <div className="pl-40">
               <Image
                 src="/images/arrow.svg"
                 alt="Flèche animée"
-                className="w-16 h-16 animate-bounceY self-left"
+                className="w-16 h-16 animate-bounceY"
                 width={65}
                 height={85}
               />
@@ -234,9 +230,9 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Image à droite encore plus large */}
-        <div className="absolute top-0 right-0 h-full w-full md:w-[54%]">
-          <div className="relative w-[100%] h-[100%]">
+        {/* Image à droite */}
+        <div className="hidden md:absolute md:block md:top-0 md:right-0 md:h-full md:w-[54%]">
+          <div className="relative w-full h-full">
             <Image
               src="/images/image_wow.png"
               alt="Lunettes en leasing"
@@ -250,104 +246,81 @@ export default function Home() {
 
       {/* Fonctionnalités */} 
       <section id="features" className="pb-16 px-6 md:px-16 pt-12">
-        <h2
-          className="text-4xl font-bold mb-8"
-          style={{ lineHeight: "1.3" }}
-        >
+        <h2 className="text-4xl font-bold mb-8" style={{ lineHeight: "1.3" }}>
           FONCTIONNALITÉS
         </h2>
 
-      {/* Contenu principal avec image */}
-      <div className="flex flex-col md:flex-row items-start gap-8 items-center">
-        {/* Image à gauche */}
-        <div className="w-full md:w-1/2 relative">
-          <Image
-            src={features[currentFeature].image}
-            alt={features[currentFeature].title}
-            width={600}
-            height={400}
-          />
-        </div>
-
-        {/* Texte à droite, verticalement centré */}
-        <div className="w-full md:w-1/2 flex flex-col justify-center">
-          <h3 className="text-xl font-bold mb-4">{features[currentFeature].title}</h3>
-          <p className="text-gray-700 text-base leading-relaxed">
-            {features[currentFeature].description}
-          </p>
-        </div>
-      </div>
-        {/* Boutons */}
-      <div className="flex justify-between mt-8">
-        <button
-          className="text-gray-500 hover:text-black"
-          onClick={handlePrevious}
-        >
-          <Image
-            src="/images/arrow-left.svg"
-            alt="Précédent"
-            width={24}
-            height={24}
-          />
-        </button>
-        <button
-          className="text-gray-500 hover:text-black"
-          onClick={handleNext}
-        >
-          <Image
-            src="/images/arrow-right.svg"
-            alt="Suivant"
-            width={24}
-            height={24}
-          />
-        </button>
-      </div>
-
-      {/* Stepper */}
-      <div className="relative mt-12">
-        {/* Ligne connectée */}
-        <div className="absolute top-3 w-full border-t border-custom_black"></div>
-
-        <div className="flex w-full justify-between items-center">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="relative flex flex-col"
-            >
-              {/* Cercle principal */}
-              <div
-                className={`w-6 h-6 rounded-full ${
-                  index < currentFeature
-                    ? "bg-primary"
-                    : index === currentFeature
-                    ? "bg-primary relative"
-                    : "bg-custom_black"
-                }`}
-              >
-                {/* Cercle secondaire autour de l’étape active */}
-                {index === currentFeature && (
-                  <div className="absolute -top-2 -left-2 w-10 h-10 border-2 border-primary rounded-full"></div>
-                )}
-              </div>
-
-              {/* Titres et descriptions secondaires */}
-              <span
-                className={`mt-4 text-sm ${
-                  index === currentFeature ? "text-custom_black font-semibold" : "text-custom_black font-semibold"
-                }`}
-              >
-                {feature.title}
-              </span>
-              <span
-                className={`text-xs mt-1 w-4/6 ${
-                  index === currentFeature ? "text-custom_black" : "text-custom_black"
-                }`}
-              >
-                {feature.shortDescription}
-              </span>
-            </div>
-          ))}
+        {/* Contenu principal */}
+        <div className="flex flex-col md:flex-row items-center gap-8">
+          {/* Image à gauche */}
+          <div className="w-full md:w-1/2 relative">
+            <Image
+              src={features[currentFeature].image}
+              alt={features[currentFeature].title}
+              width={600}
+              height={400}
+              className="object-cover"
+            />
           </div>
+          {/* Bloc texte à droite */}
+          <div className="w-full md:w-1/2 flex flex-col justify-center">
+            <h3 className="text-xl font-bold mb-4">
+              {features[currentFeature].title}
+            </h3>
+            <p className="text-gray-700 text-base leading-relaxed">
+              {features[currentFeature].description}
+            </p>
+          </div>
+        </div>
+        <div className="flex justify-between mt-8">
+          <button className="text-gray-500 hover:text-black" onClick={handlePrevious}>
+            <Image
+              src="/images/arrow-left.svg"
+              alt="Précédent"
+              width={24}
+              height={24}
+            />
+          </button>
+          <button className="text-gray-500 hover:text-black" onClick={handleNext}>
+            <Image
+              src="/images/arrow-right.svg"
+              alt="Suivant"
+              width={24}
+              height={24}
+            />
+          </button>
+        </div>
+        {/* Stepper / navigation interne aux fonctionnalités */}
+        <div className="relative mt-8 md:mt-12">
+          {/* Ligne de fond */}
+          <div className="absolute top-3 w-full border-t border-custom_black"></div>
+          
+          <div className="flex w-full justify-between items-start">
+            {features.map((feature, index) => (
+              <div key={index} className="relative flex flex-col items-start">
+                <div
+                  className={`w-6 h-6 rounded-full ${
+                    index < currentFeature
+                      ? "bg-primary"
+                      : index === currentFeature
+                      ? "bg-primary relative"
+                      : "bg-custom_black"
+                  }`}
+                >
+                  {index === currentFeature && (
+                    <div className="absolute -top-2 -left-2 w-10 h-10 border-2 border-primary rounded-full"></div>
+                  )}
+                </div>
+                <span className="mt-4 text-xs text-custom_black font-semibold max-w-[100px] md:max-w-[230px]">
+                  {feature.title}
+                </span>
+                <span className="hidden md:block text-xs text-left text-custom_black max-w-[230px]">
+                  {feature.shortDescription}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
           <div className="flex flex-col items-start pr-20 pt-20">
             <Image
               src="/images/arrow.svg"
@@ -357,26 +330,21 @@ export default function Home() {
               height={105}
             />
           </div>
-        </div>
       </section>
 
       {/* Avantages */}
-      <section id="advantages" className="px-6 md:px-16 relative">
+      <section id="advantages" className="relative px-6 md:px-16 py-12">
         <h2 className="text-4xl font-bold text-right mb-12">AVANTAGES</h2>
-
-        {/* Conteneur des cartes et de la ligne */}
-        <div className="relative flex flex-col md:flex-row justify-center items-center gap-20">
-          {/* Ligne connectée */}
+        <div className="hidden md:flex relative justify-center items-center gap-20">
           <div
-            className="absolute top-1/2 transform -translate-y-1/2 border-t-2 border-custom_black"
+            className="absolute top-1/2 -translate-y-1/2 border-t-2 border-custom_black"
             style={{
-              width: "90%", // Ajustez ici pour que la largeur soit limitée
-              maxWidth: "75rem", // Largeur maximale alignée sur la largeur des cartes
-              margin: "0 auto", // Centrer la ligne horizontalement
+              width: "90%",
+              maxWidth: "75rem",
+              margin: "0 auto",
             }}
           ></div>
 
-          {/* Cartes */}
           {[
             {
               icon: "/images/Avantage1.png",
@@ -398,13 +366,12 @@ export default function Home() {
               key={index}
               className="relative p-10 md:w-[25rem] md:h-[25rem] transform hover:scale-105 transition-transform duration-300 flex flex-col justify-between"
               style={{
-                backgroundImage: `url('/images/Avantage_bg.svg')`,
+                backgroundImage: "url('/images/Avantage_bg.svg')",
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "right",
               }}
             >
-              {/* Icône */}
               <div className="w-12 h-12 flex items-center justify-center rounded-full">
                 <Image
                   src={advantage.icon}
@@ -416,29 +383,91 @@ export default function Home() {
                   quality={100}
                 />
               </div>
-
-              {/* Contenu */}
               <div className="text-left w-60 pl-12">
-                <h3 className="text-2xl text-custom_black" style={{ lineHeight: "1.3" }}>{advantage.title}</h3>
+                <h3 className="text-2xl text-custom_black" style={{ lineHeight: "1.3" }}>
+                  {advantage.title}
+                </h3>
               </div>
-
-              {/* Numéro */}
               <div className="text-custom_black text-6xl font-medium text-right pr-6">
                 {advantage.number}
               </div>
             </div>
           ))}
         </div>
+        <div className="md:hidden relative flex flex-col items-center gap-16 mt-8">
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-custom_black" />
+
+          {[
+            {
+              icon: "/images/Avantage1.png",
+              title: "Une offre plus accessible.",
+              number: "01",
+            },
+            {
+              icon: "/images/Avantage2.png",
+              title: "Des conseils adaptés à votre physionomie.",
+              number: "02",
+            },
+            {
+              icon: "/images/Avantage3.png",
+              title: "Un service client très réactif.",
+              number: "03",
+            },
+          ].map((advantage, index) => (
+            <div
+              key={index}
+              className="relative w-[18rem] h-[20rem] p-4 flex flex-col justify-center hover:scale-105 transition-transform duration-300"
+              style={{
+                backgroundImage: "url('/images/Avantage_bg.svg')",
+                backgroundPosition: "center",
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              <div className="flex flex-col items-start justify-between w-[15rem] h-[20rem]">
+                <div
+                  className="flex items-center gap-2"
+                  style={{ marginTop: "calc(1.5rem + 0.5vw)" }}
+                >
+                  <div className="w-12 h-12 flex-shrink-0">
+                    <Image
+                      src={advantage.icon}
+                      alt={advantage.title}
+                      width={46}
+                      height={46}
+                    />
+                  </div>
+                </div>
+                <div className="mt-2" style={{ maxWidth: "calc(100% - 2.5rem)" }}>
+                  <h3 className="text-lg font-semibold text-custom_black leading-tight">
+                    {advantage.title}
+                  </h3>
+                </div>
+                <div
+                  className="self-end pr-3"
+                  style={{ marginBottom: "calc(1rem + 0.5vw)" }}
+                >
+                  <div className="text-custom_black text-4xl font-medium">
+                    {advantage.number}
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Flèche de transition */}
         <div className="flex flex-col items-start pl-20 pt-20">
-            <Image
-              src="/images/arrow.svg"
-              alt="Flèche animée"
-              className="w-16 h-16 animate-bounceY self-start"
-              width={85}
-              height={105}
-            />
-          </div>
+          <Image
+            src="/images/arrow.svg"
+            alt="Flèche animée"
+            className="w-16 h-16 animate-bounceY self-start"
+            width={85}
+            height={105}
+          />
+        </div>
       </section>
+
 
       {/* Témoignages */}
       <section id="testimonials" className="py-16 px-16 relative">
@@ -446,63 +475,55 @@ export default function Home() {
         <p className="text-custom_black text-left mb-12">
           Ils en parlent mieux que personne, ils ont testé pour vous !
         </p>
-
-        {/* Carrousel */}
-        <div className="relative flex items-center justify-center overflow-visible min-h-[300px]">
+        <div
+          className="hidden md:flex relative items-center justify-center overflow-visible"
+          style={{ minHeight: "clamp(300px, 40vh, 400px)" }}
+        >
           <div className="flex items-center gap-8">
             {testimonials.map((testimonial, index) => {
               const isActive = index === currentIndex;
-              const isLeft =
-                index === (currentIndex - 1 + testimonials.length) % testimonials.length;
-              const isRight =
-                index === (currentIndex + 1) % testimonials.length;
-
               return (
                 <div
                   key={index}
                   onClick={() => handleCardClick(index)}
                   className={`cursor-pointer transition-all duration-500 ease-in-out relative flex flex-col p-8 ${
-                    isActive
-                      ? "scale-100 opacity-100 z-20"
-                      : isLeft || isRight
-                      ? "scale-50 opacity-100 z-10"
-                      : "scale-50 opacity-0 z-0"
+                    isActive ? "z-20" : "z-10"
                   }`}
+                  style={{
+                    transform: isActive ? "scale(1)" : "scale(0.5)",
+                    opacity: 1,
+                    width: "clamp(20rem, 30vw, 35rem)",
+                    height: "clamp(15rem, 20vw, 20rem)",
+                  }}
                 >
-                  {/* Image en arrière-plan */}
                   <div className="absolute inset-0 -z-10">
                     <Image
                       src="/images/Temoignages_bg.svg"
                       alt="Témoignage"
                       layout="fill"
                       objectFit="contain"
-                      className={`transition-transform duration-500 ${
-                        isActive ? "scale-150" : "scale-150"
-                      }`}
+                      className="transition-transform duration-500"
                     />
                   </div>
-
-                  {/* Contenu */}
                   <h3
-                    className={`${
-                      isActive
-                        ? "text-xl font-bold mb-2"
-                        : "text-xs font-bold mb-1"
+                    className={`font-bold text-custom_black mt-8 ${
+                      isActive ? "mb-2" : "mb-1"
                     }`}
+                    style={{ fontSize: "clamp(1rem, 2vw, 1.5rem)" }}
                   >
                     {testimonial.title}
                   </h3>
                   <p
-                    className={`text-custom_black italic ${
-                      isActive ? "mb-4 text-base" : "mb-2 text-xs"
+                    className={`italic text-custom_black ${
+                      isActive ? "mb-4" : "mb-2"
                     }`}
+                    style={{ fontSize: "clamp(0.75rem, 1.5vw, 1rem)" }}
                   >
                     {testimonial.feedback}
                   </p>
                   <p
-                    className={`text-custom_black font-bold ${
-                      isActive ? "text-base" : "text-xs"
-                    }`}
+                    className="font-bold text-custom_black"
+                    style={{ fontSize: "clamp(0.75rem, 1.5vw, 1rem)" }}
                   >
                     — {testimonial.name}
                   </p>
@@ -511,17 +532,47 @@ export default function Home() {
             })}
           </div>
         </div>
-        <div className="flex flex-col items-center pt-20">
-            <Image
-              src="/images/arrow.svg"
-              alt="Flèche animée"
-              className="w-16 h-16 animate-bounceY self-center"
-              width={85}
-              height={105}
-            />
-          </div>
-      </section>
+        <div className="md:hidden flex flex-col gap-8">
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className="relative p-6 border border-gray-300 rounded-lg"
+              style={{ minHeight: "200px" }}
+            >
+              <div className="absolute inset-0 -z-10">
+                <Image
+                  src="/images/Temoignages_bg.svg"
+                  alt="Témoignage"
+                  layout="fill"
+                  objectFit="contain"
+                  className="transition-transform duration-500"
+                />
+              </div>
+              <h3 className="text-lg font-bold text-custom_black mb-2">
+                {testimonial.title}
+              </h3>
+              <p className="text-base text-custom_black italic mb-2">
+                {testimonial.feedback}
+              </p>
+              <p className="text-base font-bold text-custom_black">
+                — {testimonial.name}
+              </p>
+            </div>
+          ))}
+        </div>
 
+        {/* Flèche de transition */}
+        <div className="flex flex-col items-center pt-20">
+          <Image
+            src="/images/arrow.svg"
+            alt="Flèche animée"
+            className="w-16 h-16 animate-bounceY self-center"
+            width={85}
+            height={105}
+          />
+        </div>
+      </section>
+      
       {/* Formules */}
       <section id="plans" className="pb-16 flex flex-col items-center">
       <h1 className="text-4xl font-bold mb-8">Formules</h1>
