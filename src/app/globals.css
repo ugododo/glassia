@@ -68,3 +68,7 @@ body {
   top: -8px;
   left: -8px;
 }
+
+.responsive-btn-size {
+  font-size: 1rem !important;
+}

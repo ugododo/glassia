@@ -218,7 +218,7 @@ export default function Home() {
                 />
               </a>
             </div>
-            <div className="pl-40">
+            <div className="mt-8 w-full flex justify-center md:justify-start md:pl-32">
               <Image
                 src="/images/arrow.svg"
                 alt="Flèche animée"
@@ -246,7 +246,7 @@ export default function Home() {
 
       {/* Fonctionnalités */} 
       <section id="features" className="pb-16 px-6 md:px-16 pt-12">
-        <h2 className="text-4xl font-bold mb-8" style={{ lineHeight: "1.3" }}>
+        <h2 className="text-4xl text-center md:text-left font-bold mb-8" style={{ lineHeight: "1.3" }}>
           FONCTIONNALITÉS
         </h2>
 
@@ -321,7 +321,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-          <div className="flex flex-col items-start pr-20 pt-20">
+          <div className="w-full flex justify-center pt-20 md:justify-end md:pr-20">
             <Image
               src="/images/arrow.svg"
               alt="Flèche animée"
@@ -334,7 +334,7 @@ export default function Home() {
 
       {/* Avantages */}
       <section id="advantages" className="relative px-6 md:px-16 py-12">
-        <h2 className="text-4xl font-bold text-right mb-12">AVANTAGES</h2>
+        <h2 className="text-4xl font-bold text-center md:text-right mb-12">AVANTAGES</h2>
         <div className="hidden md:flex relative justify-center items-center gap-20">
           <div
             className="absolute top-1/2 -translate-y-1/2 border-t-2 border-custom_black"
@@ -457,7 +457,7 @@ export default function Home() {
         </div>
 
         {/* Flèche de transition */}
-        <div className="flex flex-col items-start pl-20 pt-20">
+        <div className="w-full flex justify-center pt-20 md:justify-start md:pl-20 md:pt-20">
           <Image
             src="/images/arrow.svg"
             alt="Flèche animée"
@@ -616,16 +616,36 @@ export default function Home() {
           <h2 className="text-sm font-bold text-gray-700 uppercase">Restez à jour, suivez notre</h2>
           <h2 className="text-4xl font-bold">NEWSLETTER</h2>
         </div>
-        <form onSubmit={handleSubmit} className="flex flex-1 items-center w-full bg-white rounded-full overflow-hidden">
+        <form
+          onSubmit={handleSubmit}
+          className="flex items-center w-full bg-white rounded-full overflow-hidden"
+        >
           <input
             type="email"
-            className="flex-1 px-6 py-3 text-gray-600 placeholder-gray-400 focus:outline-none bg-white"
+            className="
+              flex-1
+              min-w-0
+              px-6 py-3
+              text-gray-600 placeholder-gray-400
+              focus:outline-none
+              bg-white
+            "
             placeholder="Votre adresse mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <button type="submit" className="bg-primary text-white px-6 py-3 font-semibold rounded-full hover:bg-custom_primary">
+          <button
+            type="submit"
+            className="
+              flex-shrink-0
+              bg-primary text-white
+              px-6 py-3
+              font-semibold
+              rounded-full
+              hover:bg-custom_primary
+            "
+          >
             S&apos;ABONNER
           </button>
         </form>
