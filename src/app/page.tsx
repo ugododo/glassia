@@ -76,7 +76,11 @@ export default function Home() {
       name: "GRATUITE",
       price: "0€",
       description: "Accès limité à l’application",
-      features: ["Essai virtuel limité (3)", "Chat avec une IA", "Accès limité à la base d'opticiens géolocalisés"],
+      features: [
+        "Essai virtuel limité (3)",
+        "Chat avec une IA",
+        "Accès limité à la base d'opticiens géolocalisés (proche de chez soit)"
+      ],
       buttonText: "TÉLÉCHARGER",
       buttonStyle: "border border-black text-black",
     },
@@ -90,8 +94,7 @@ export default function Home() {
         "Recommandations en fonction de la physionomie",
         "Chat avec IA + humain",
         "Réduction exclusives chez des partenaires (-10%)",
-        "Analyse virtuelle",
-        "Prise de rendez-vous avec un opticien",
+        "Prise de rendez-vous avec un opticien en ligne",
       ],
       buttonText: "TÉLÉCHARGER",
       buttonStyle: "border border-black text-black",
