@@ -114,7 +114,7 @@ export default function Home() {
         "Option : deuxième paire à 10€/mois"
       ],
       footnote: "* Voir condition d'achat",
-      buttonText: "DEMANDER UN DEVIS",
+      buttonText: "TÉLÉCHARGER",
       buttonStyle: "bg-black text-white",
     },
   ];
